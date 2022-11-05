@@ -6,7 +6,7 @@ Course Schedule and File Links
   - Week Five - MatPlotLib 
   - Week Six - API Calls
   - Week Seven - SQL 
-  - Week Eight - 
+  - Week Eight - ETL
   - Week Nine - 
   - Week Ten - 
   - Week Eleven - 
