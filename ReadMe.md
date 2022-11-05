@@ -9,18 +9,18 @@ Course Schedule and File Links
   - Week Eight - ETL
   - Week Nine - SQL Lite and Flask (MongoDB) 
   - Week Ten - Data Ethics 
-  - Week Eleven - 
-Week Twelve - 
-Week Thirteen - 
-Week Fourteen - 
-Week Fifteen - 
-Week Sixteen - 
-Week Seventeen - 
-Week Eighteen - 
-Week Nineteen - 
-Week Twenty - 
-Week TwentyOne - 
-Week TwentyTwo - 
-Week TwentyThree - 
-Week TwentyFour - 
-Ongoing Studies and Projects 
+  - Week Eleven - HTML, CSS and WebScraping
+  - Week Twelve - JavaScript 
+  - Week Thirteen 
+  - Week Fourteen
+  - Week Fifteen
+  - Week Sixteen
+  - Week Seventeen 
+  - Week Eighteen
+  - Week Nineteen
+  - Week Twenty
+  - Week Twenty One
+  - Week Twenty Two
+  - Week Twenty Three
+  - Week Twenty Four 
+  - Projects and Research 
