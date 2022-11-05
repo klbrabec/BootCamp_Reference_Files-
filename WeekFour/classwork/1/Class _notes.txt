@@ -1,0 +1,33 @@
+Open your Jupyter notebook at a higher level then where your files are
+this will allow you to 'look down' the tree 
+
+Jupyter notebook is a 'server' operating on the terminal. You need to leave
+the terminal open and running in the background to access and use the notebook. 
+
+> recommendation - leave your home tab in JN open in order to quickly navigate 
+around. 
+
+Pandas also utilizes other libraries 
+biggest thing that pandas helps with is dataframes 
+
+pd.Series() - creates a one dimensional array of data. 
+a Data Frame consists of multiple series. 
+
+A series is a column of data 
+a data frame is similar to a spreadsheet - multiple columns 
+series and data frames are both indexed using standard python indexing. 
+
+The brackets tell you what order the cells run in. (Helpful for troubleshooting if things aren't working)
+the In [*] will tell you that a cell is currently running 
+
+python runs code from top to bottom.  It is executed in sequence as it is
+encountered by the interpreter. 
+
+Two ways to create a data frame
+> create from a list of dictionaries
+> create from a disctionary of lists
+
+
+
+
+

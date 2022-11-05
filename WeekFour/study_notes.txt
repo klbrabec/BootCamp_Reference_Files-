@@ -1,0 +1,526 @@
+Goals: 
+* Collect data by importing CSV files into DataFrames
+* Prepare and clean data for analysis 
+* generate summary statistics 
+* create and customize plots of data 
+* select data for analysis 
+
+4.1
+Anaconda Installation 
+Distribution software for over 1500 packages
+Includes Jupyter
+R language 
+
+currently have 4.14.0 installed 
+update conda - conda update conda
+update anaconda (the packaging system) conda update Anaconda
+conda --version - checks the version 
+
+Creation of a Development Environment/Virtual Environment 
+Dev environment or virtual environment is an isolated, working copy of the coding
+environment that devs used to install different versions of packages for 
+specific projects. 
+
+A virtual enviornment is like a sandbox that contains the toys we want to play with
+for specific activities. 
+can leave the virtual environment at any time and it will still be there when we return. 
+
+Creating a Development Environment 
+    bash command
+    conda create -n PythonData python=3.6 anaconda
+    conda creates a new environment (create -n)
+    PythonData - Name of new environment 
+    Install python= 3.7 
+    Add anaconda and packages to the virtual environment 
+    Will list all packages that are being installed 
+    Indicate Y to proceed 
+    After download and extraction is complete, it will display how to activate and 
+    deactivate the environment. 
+    ex: 
+*   To activate this environment, use
+#
+#     $ conda activate PythonData
+#
+#   To deactivate an active environment, use
+#
+#     $ conda deactivate
+conda info --envs - displays all conda environments 
+
+to switch to an environment, we need to activate the environment.
+This lets us know that we have the right packages available. 
+
+at the start menu, type anaconda prompt(environment name)
+(PythonData) <computer_name>: ~<home_directory>$ will show - this indicates that the environment is active. 
+
+python --version will show the current version of python that is installed. (3.7.13 for me)
+
+to deactivate an environmnent 
+conda deactivate #on the command line from the anaconda prompt 
+
+conda env remove --PythonData (Should remove it, but it doesn't seem to - get an error that --Python Data is an unrecognized argument)
+
+
+Jupyter Notebook 
+Open source -web based application that allows users to create and share documents
+- live code
+- equations
+- visualizations
+- explanatory text
+
+Console/text editor/file browser 
+
+Can be used to import data in various formats, clean data, merge datasets, 
+filter based on conditionals, slice on ranges, sort on values and group into 
+similar categories 
+
+(BE PATIENT _ THESE THINGS ARE SLOWWWWWW)
+
+add a development environment to Jupyter Notebook
+python-m ipykernel install --user --name <ENVIRONMENT NAME>
+
+run jupyter notebook 
+in the folder you want to do work (as high as necessary) 
+at the $ prompttype
+jupyter notebook  <enter> 
+Starts a server to run the appication for you. 
+makes files and folders available 
+In the default web browser, a file opens Http://localhost:8888/Tree 
+Shows the tabs of Jupyter's startup page 
+
+check the pythonData environment in the notebook 
+check for your environment name in the NEW dropdown list - if it appears, 
+it has successfully been added to the kernels. 
+
+What is Local Host? 
+your computer running a web server on your computer. 
+local host has the IP address of 127.0.0.1 
+Loopback address, any information sent to this address will be routed back to your 
+computer 
+8888 - the port number where the notebook acceses files and folders 
+To access any folders that are not in this tree, you will need to navigate to the folder
+ you want to be in and then run Jupyter from there. 
+
+ Using Jupyter Notebook 
+ Similar to editing software
+ File and Toolbars 
+ Checkpoints allow us to restore to a previous check point. 
+ ipynb - can be shared
+ py - can run like python
+ html - allows you to run like a website 
+
+ shutdown - allows you to shut down your kernel 
+ select and click shutdown 
+ Toolbar shows essential and oftenused tools. 
+
+ setting your kernel for your notebook is important - lets your program know which
+ libraries are available for use. 
+
+ Changing the kernel changes the development environment being worked in.
+
+ 4.1.11 - Overview and Practice Using Pandas Library 
+ provides high-performance data analysis tools 
+ included in the Anaconda distribution 
+ In jupyter, you can use the pandas library to extract raw data from various sources
+ clean/transform/manipulate/analyze and visualize data
+ Leaves the original dataset intact. 
+
+ adds the ability to add series and dataframes to the toolkit 
+ (Structured lists with built in methods)  
+
+ Series - a one dimensional labeled array that can hold any data type 
+ Data is linear and has an index that acts like a key in a dictionary. 
+ 
+ you can convert a list into a Pandas Series 
+
+ (Most notes/work will be in jupyter_practice notebook)
+
+ Pandas dataframe 
+ Two dimensional/labeled data structure (similar to a dictionary)
+ rows and columns of potentially different data types
+ Strings
+ InstallFloating point numberes
+ Data is aligned in a table 
+
+ Dataframes contain multiple series or lists. 
+ each column in the source excel file is a series. 
+
+ can convert into a dataframe by using pandas.DataFrame method 
+
+ keys correspond to a column header 
+ values for the keys are a row in the excel file 
+ (dictionaries have keys and values key/value pairs)
+
+ in dataframes, indexing starts at 0 
+
+ Converting a list of series into a dataframe 
+
+ Anatomy of a dataflow 
+ Columns - The header row - the first row
+ Index - Identifiers - one for each row, displayed before the first column 
+    usually integers, (Starting at 0 and +1 for each row) but can be modified
+    Values - the data values in a column. 
+
+Columns Attribute 
+<Dataframe_name>.columns - lists the column names 
+ex: school_df.columns 
+
+index attribute 
+dataframe_name.index - shows the range index - first value/end value  and increment valuefor the i ndex 
+
+values attribute
+dataframe_name.values 
+
+4.2.1 - Introduction to Data Analysis - Three Phase Processs 
+
+although there is no single best way to analyze data - it typically follows a 3 phase process 
+> Collect Data - import it into a structure that Python and Pandas can work on
+> Prepare data - clean the data to account for missing/incomplete/erroneous/duplicated data 
+> analyze data - iterative process 
+    testing a thesis
+    Reviewing results
+    refining 
+    reach a conclusion 
+
+4.2.2 - Data Analysis Tools 
+Jupyter Notebook 
+    allows us to run s mall segments of code as we write them. 
+    Useful for checking results and making sure code is operating
+    the way we expect it to. 
+This code COULD be written in a plain old .py file - but having the tool 
+do the heavy lifting makes it more efficient 
+
+Pandas
+python library that is specifically designed for data analysis 
+Streamlined ways of revieing datasets 
+Functions that simplify importing, updating and analysis 
+designed to work with multiple file formats 
+Pandas is optimized to perform quickly and efficiently 
+
+Human friendly coding syntax that is straightforward 
+
+4.2.3 - What are data containers? 
+collecting data = importing data into a container or structure and then organizing it so we can work with it. 
+    Types of containers - series and dataframe 
+
+Series - a container for a sequence of data 
+    corresponds to a column in a spreadsheet
+    can hold any type of data 
+DataFrame - equivalent of two or more series 
+    corresponds to an entire spreadsheet. 
+    within a dataframe we can work with rows and columns 
+
+One way to create a DataFrame is to collect/read data from an external file. 
+(may be a csv file or a spreadsheet)
+    Each line in the CSV file corresponds to a row in the table. 
+    In each row, individual column values are separated by commas. 
+
+4.2.4 - Collecting data from a CSV file 
+when you use os.path.join() to navigate to a file, keep these structures in mind: 
+. = this home_directory
+.. = the parent directory 
+../ = the parent directory 
+~/ = the user's home directory or the application's home directory
+/ = the root directory 
+../../ = the parent's parent directory 
+
+unless code indicates which column to set as the index, it is automatically generated 
+and will not have a header. 
+
+if there is an issue with the data import, an error message will appear that indicates
+the details. 
+
+4.3.1 - Introduction to preparing data 
+flawed data leads to flawed analysis. 
+
+dirty data is the scourge of data analysts.
+It is common 
+Prparing any dataset is essential before it's analyzed.  
+
+4.3.2 - Handling Missing Data 
+Pandas typically represents missing values by using a data type known as NaN 
+(Not a Number)
+Placeholder for missing data - similar to a null value 
+NaN can be used with a particular pandas functions.  
+Identify the missing values and remove or replace them. 
+
+isnull function - 
+    Returns true if it finds a NaN value in a DataFrame
+    Returns false otherwise 
+
+DataFrameName.isnull() #sets individual fields True/false 
+DataFrameName.isnull().sum() #counts the number of null values in each column 
+DataFrameName.isnull().mean() #calcualtes the percentage of missing values
+
+#calculation logic - cell gets assigned a 1 if data is present and 0 if no data is present. 
+#taking the mean of these columns will show the percentage of missing data determined
+#allowing us to determine how to handle the missing data. 
+
+How to handle missing data 
+Remove/drop
+    if there are just a few missing values - we may want to drop the 
+    rows that contain the missing values. 
+    Dropping a small number of frows from a large dataset shouldn't change
+    the overall structure of the data. 
+    Analysis should return the same results. 
+    with a smaller data set or many NaN values -w e don't want to drop the rows
+    may drastically change the dataset and skew the results. 
+    If a lot of data is missing - you should go back to the data collection Phase
+
+To drop rows of data that have missing values - use the dropna function. 
+ 
+ex 
+daily_returns2 = daily_returns.dropna()
+daily_returns2
+
+every data point should have a value - a different technique for handling
+missing data is to fill it. 
+
+3 most common replacement values 
+"unknown"
+"0"
+the value that the mean function returns
+
+The choice is up to the analyst, and should be selected based on the
+type of data that is being written. 
+
+fillna() function - you supply with a replacement value for the NaN values 
+Pandas will do the rest. 
+
+ex 
+# Replace the NaNs with "Unknown"
+daily_returns = daily_returns.fillna("Unknown")
+
+# Replace the NaNs with 0
+daily_returns = daily_returns.fillna(0)
+
+# Replace the NaNs with the mean of the column
+daily_returns = daily_returns.fillna(daily_returns.mean())
+This is a shortcut with filling the missing values with the mean value of
+each column. 
+
+you can do this for a specific column in order to make use of different valuesFor one column using pandas:
+df['DataFrame Column'] = df['DataFrame Column'].fillna(0)
+(found on https://www.geeksforgeeks.org/replace-nan-values-with-zeros-in-pandas-dataframe/)
+
+4.3.3 - Handling duplicated data 
+data collection processes may introduce both missing and duplicated data. 
+it is more common to drop duplicates rather than keep them. 
+(Duplicated data may skew data sums and averages) 
+
+Identify duplicates
+Pandas duplicated() function 
+False = not a duplicate record (or the first in a series of duplicates)
+True = duplicate record 
+
+best_actors_df.duplicated() - shows if a value is duplicated 
+best_actors_df.duplicated().sum() - shows how many values are duplicated. 
+
+dropping duplicates
+drop_duplicates() removes duplicated rows.
+Can be used against a dataframe or a series. 
+
+4.3.4 - Handling additional dirty data 
+Types
+Typos 
+misplaced data
+mixed data types
+incorrect symbols or punctuation 
+
+All need to be fixed when preparing for analysis 
+
+Identifying messy text data 
+data often contains text fields in addition to numbers 
+names/emails/comments, etc. 
+messy text can include mispellings, capitalization problems, extra or missing spaces, 
+invalid symbols and punctuation. 
+ex. - when data includes the $ sign. This would be messy data in pandas. 
+Pandas treats numeric values as strings so they can't undergo mathematical calculations 
+
+Removing symbols from text data 
+str.replace - can be used to replace the $ symbol with an empty string ""
+
+Want to make sure that we replace the string only in the column that we want to fix.  (using loc or iloc to specify the column)
+
+prices = pd.DataFrame({
+    "price_usd": ["$0.53", "$0.22", "0.34"]
+})
+
+prices.loc[:, "price_usd"] = prices.loc[:, "price_usd"].str.replace("$", "")
+prices
+
+converting a text data type to a numerical data type 
+astype function can be used to convert strings to numbers. 
+accepts an argument for the numerical type we want to convert data to.
+most common are float and int 
+float tends to be the numerical type of choice. (because of decimal and currency values)
+again - loc should be used to specify the column that is being converted 
+
+
+4.4.1 - introduction to summarizing data in PANDAS. 
+Summarization - a technique that uses statistical measurements
+in a dataset.
+Summary statistics 
+    count
+    mean
+    standard deviation
+    minimum value
+    maximum value 
+    Supplies general information about the values in a dataset.
+    Allows you to build intuition about the data. 
+
+describe function is the most straightforward way to generate a bunch of summary statistics at once. 
+sales_df.describe() <--syntax 
+    Results - 
+    Count - the number of elements in the column 
+    mean - the average value of the column 
+    std - the standard deviation of the values in the column 
+    min - the minimum value in the column
+    25/50/75 - quartiles - the values that occupy each respective percentile 
+    max - the maximum value in the column 
+To generate summary statistics for columns that contain mixed data types include the include = 'all' parameter 
+
+Generate a specific summary statistic 
+    mean() 
+    min()
+    max() 
+
+4.5 - Drilling down into data 
+Targeted analysis - drilling down into data 
+Can be done using location functions 
+    select or update areas of interest in a Dataframe 
+    loc 
+    iloc 
+
+Selecting rows by integer based location 
+    Select a row by using its related index number in the iloc function 
+    # Create a DataFrame
+    aapl_returns = pd.DataFrame({"AAPL": [0.5, 0.56, 0.59, 0.52, 0.1]})
+
+    # Select the first row using iloc
+    aapl_returns.iloc[0] <-- note it uses brackets, not parentheses
+    This is because it mimics python list indexing. 
+    can also use to return a range of rows based on the numerical index range
+    aapl_returns.iloc[0:3]<--will return 0/1/2 index rows (Remembe,r up to, but not including the last number)
+
+    aapl_returns = pd.DataFrame({"AAPL": [0.5, 0.56, 0.59, 0.52, 0.1, 0.75, 0.47]})
+    aapl_returns.iloc[4:7] #is there a way to use two negative index values to do -3 from the end to -1 to the end?
+
+    Select Rows by Index 
+    You can use integer based locations if you know the values you need 
+    But if the area of interest is in the middle of a huge dataframe - 
+    For example - selecting a range of dates out of a data frame of 1000 days. 
+    You can use the .loc function to return the dates you need. 
+    revenue_df.loc['2018-10-01':'2019-03-31'] will create a subset of data that includes only this range of dates. (IS IT INCLUSIVE? - yes)
+    can also use describe() to get summary statistics
+    revenue_df.loc['2018-10-01':'2019-03-31'].describe()
+
+    Select rows by filtering 
+    select rows by values that don't exist in the index 
+    can filter on values in specific columns in a dataframe 
+    
+    sales_df["quantity"]> 10 - This evaluates the values and determines which ones are true 
+    you can set this as a filter value like this:
+    filter = sales_df["quantity"] > 10 
+    and then run the loc function on the filter 
+    sales_df.loc[filter] - this creates a subset data frame that meets the filter condition 
+
+    Can also write in a single line - sales_df.loc[sales_df["quantity"]>10]
+
+    Select rows by combining filters 
+    You can filter based on multiple conditions. 
+    using the .loc function - this is straightforward 
+    when both conditions are true - AND (&)
+    when only one condition is true - OR (|)
+
+    sales_df.loc[(sales_df["quantity"] > 10) & (sales_df["total_price"] < 45)]
+    This filter will select records where the quantity is greater than 10 and the total price is less than 45 
+    When using multiple conditional statments - wrap each statement in parenthesis - otherwise the code will fail 
+
+
+    min_price = sales_df["total_price"].min() min_price_row = sales_df.loc[sales_df["total_price"] == min_price] min_price_row
+    This filter would select the item that has the lowest total price 
+
+    sales_df.loc[sales_df["item"] == "tomatoes", ["total_price"]].mean()
+    Find the mean price of tomatoes 
+
+    Selecting specific rows and columns 
+    sales_df.iloc[0:3, [0, 2]]
+        first and third columns for the first three rows of data in the dataframe 
+
+    sales_df.loc[sales_df["item"] == "tomatoes", ["quantity", "total_price"]]
+        Filters on tomatoes - and returns quantity and total price 
+
+
+    sales_df.loc[:, ["item", "total_price"]]
+        selects columns without filtering for a particular product 
+
+    sales_df.sort_values("total_price")
+        Allows you to sort the dataframe based on a particular column 
+            to sort in descending order - ascending = false is added on as an attribute 
+            sales_df.sort_values("total_price", ascending=False)
+
+
+4.6 - Introduction to Comparing Subsets of Data 
+    Summarizing data gives you a big picture analysis 
+    drilling down gives you a targeted analysis 
+    completing analysis is done by grouping or aggregating data 
+
+    Aggregating data is done to allow us to compare aggregations which are subsets of the data. 
+    There are functions within Pandas that allows us to do this. 
+
+    A dataset often has natural aggregations or groups 
+        Can analyze separately and in comparison to 
+        loc/iloc can work - but it is error prone and time consuming 
+        groupby allows us to subdivide a dataframe into groups based on the column in that dataframe. 
+            group by should use a column that contains the values we want to use for grouping 
+            Repeated values so the groups will be meaningful 
+            Each value in the chosen grouping column will get its own row in the DataFrame
+
+            groupby will return something like this: 
+            <pandas.core.groupby.generic.DataFrameGroupBy object at 0x000002BDE6142A48>
+            This indicates the groups are packed together and waiting to be used in aggregation functions. 
+        From Klaus in Slack 
+        For reference: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html
+        (Quick note: by=="" won't work; == is a comparison. I assume it was a typo above, as 4.6.4 uses a single equal sign: by="").
+        There are a few ways to do it. groupby(by="A"), groupby(by=["A"]), groupby("A"), and groupby(["A"]) all do the same thing (will group the dataframe by A). Notice that when we use the brackets, we're passing a list of indices/columns to groupby(). We will always need the square brackets if we want to group by multiple indices/columns.
+        It's just a perk that the by= part is optional. groupby(["a", "b"]) and groupby(by=["a", "b"]) will both group the dataframe by two columns: a then b.
+        aggregation functions are functions that return a single value when applied to an entire column 
+        sum - adds all values together to return a single value
+        max - returns the largest value
+        mean - finds the mean/average 
+
+    Looking at the item group dataset - 
+    item_group_df = sales_df.groupby("item")
+    item_group_df.mean()    
+
+    This groups by the item - and then calculates the 'mean' on the total price for each item 
+    
+    note - groupby function will only return meaningful data if an aggregation function is applied. 
+
+    You can group by multiple columns at one time
+
+    store_item_group_df = sales_df.groupby(["store", "item"])
+    store_item_group_df.max()
+
+    This shows the store first, and then the items within the store, and then total price. 
+    you want to make sure you're grouping things logically - or else things just look...weird. 
+    This only creates parings that exist in the original dataframe. 
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
