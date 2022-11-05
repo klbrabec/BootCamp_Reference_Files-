@@ -1,0 +1,393 @@
+7.0
+End of the module you will be able to
+- design an ERD that applies to your data
+- create and use a SQL database 
+- import and export CSV datasets
+- use joins 
+- write basis to intermediate level SQL statements 
+
+7.1.1 - Download and Install Tools 
+Postgresql Documentation 
+https://www.postgresql.org/docs/
+Postgres Tutorial 
+https://www.tutorialspoint.com/postgresql/
+
+pgAdmin - tool where queries will be written, executed and results will be bviewed
+provides access into the data within the database 
+
+Installation notes for postgresql
+Installation Directory: C:\Program Files\PostgreSQL\11
+Server Installation Directory: C:\Program Files\PostgreSQL\11
+Data Directory: C:\Program Files\PostgreSQL\11\data
+Database Port: 5432
+Database Superuser: postgres
+Operating System Account: NT AUTHORITY\NetworkService
+Database Service: postgresql-x64-11
+Command Line Tools Installation Directory: C:\Program Files\PostgreSQL\11
+pgAdmin4 Installation Directory: C:\Program Files\PostgreSQL\11\pgAdmin 4
+Installation Log: C:\Users\kbrabec\AppData\Local\Temp\install-postgresql.log
+
+7.1.2 - Identifying Data Relationships 
+Datasets and common columns 
+Before we start with queries - or even loading data into the database, we need
+to understand what were looking at.  
+
+departments.csv file 
+Lookup table - used to organize data 
+
+dept_emp.csv 
+note - dept_no column is in both spreadsheets - providing a link to 
+the two.  
+
+Database keys - 
+identify records from tables and establish relationships between tables 
+
+Primary Keys - 
+    A unique identifier for each row. 
+    When a database table is created, each table added MUST include a Primary key 
+    in the architecture.  
+    Primary keys serve as a link between tables 
+    Linking tables is called a 'join' 
+
+Foreign Keys - 
+    a foreign key references another datasets primary key 
+    
+7.1.3 - Determine Entity Relationships 
+    Crucial part of getting a database ready is preparing a solid foundation 
+    table structure in SQL 
+        Similar to dataframes 
+        they have headers and indexes
+        data is in columns and rows 
+    Entity Relationship Diagrams (ERDs)
+        A type of flowchart that highlights different tables and their relationships to each other
+        ERD does not include any actual data 
+            * Primary Keys 
+            * Foreign Keys 
+            * Data types for each column 
+        Also shows the flow of information from one table to another 
+        ERDs are used to document existing databases 
+        Gives a deeper understanding of the data and the database as a whole 
+        Entities - the tables 
+        Attributes - The data contained within them 
+        Three types of ERDs 
+            Conceptual 
+            Logical
+            Physical
+            You need the conceptual ERD to build a logical ERD to build a physical ERD 
+
+7.1.4 - Quick Database Diagram Tools 
+    https://www.quickdatabasediagrams.com/
+
+7.1.5 - Create an ERD 
+    Can be referred to as: 
+        ERD
+        flowchart
+        Schema 
+
+    Building a Conceptual Diagram 
+        ERD at its simplest form. 
+        Need table names and column headers 
+        just creating the 'concept' of the diagram 
+        Schema - the design of the database - specifically how the tables and their relationships are mapped out. 
+
+    Logical diagrams 
+        Contain all of the same information - but the table is updated to include data types and primary keys 
+
+    Physical diagrams 
+        Portray the physical relationship (how data is connected) 
+        Relationshp types 
+        - One to one 
+        -< one to many 
+        >- many to one
+        >-< - many to may 
+        -0 - one to zero or one 
+        0- zero or one to one
+        0-0 zero or one to zero or one 
+        -0< one to zero or many 
+        >0- - zero or many to one 
+
+    Creating each form of the diagram gives us more exposure to the data and its layout 
+        This leads to more familiarity 
+        Creates a map of the relationships 
+
+
+7.2 - Create a Database 
+    (each DBMS will do this a bit differently)
+
+7.2.2 - Create tables in SQL 
+    Sample syntax to create a table: 
+    -- Creating tables for PH-EmployeeDB
+        CREATE TABLE departments (
+            dept_no VARCHAR(4) NOT NULL,
+            dept_name VARCHAR(40) NOT NULL,
+            PRIMARY KEY (dept_no),
+            UNIQUE (dept_name)
+        );      
+    RE: comments 
+        Clean code and comments are both necesary - 
+        does the com pany have a style guide on comments?
+        Comments are often used as a placeholder for future code 
+        A way to add copy right and ownership info to proprietary code
+        add clean and clear comments - it's a good habit. 
+
+    CREATE TABLE - syntax that creates a new table 
+    departments - name of the table and how it will be referenced
+    dept_no VARCHAR(4) NOT NULL, - creates a column with this name that can hold 4 characters and no null fields are allowed
+        not null is important - not all data will be returned in queires and can skew data 
+    dept_name VARCHAR(40) NOT NULL, - creates the department name column, max size 40 characaters
+    PRIMARY KEY (dept_no), sets the dept_no column as the primary key 
+    UNIQUE (dept_name0), adds the unique constraint to the dept_name field 
+        Constraint - a rule that is applied to a column - provides more accuracy and
+        reliability when working with it. 
+        Unique - implies that the data in the column is unique. 
+        prevents dirty data
+    () - includes all paremeters for the table.  They are indented to keep code clean and readable 
+    ; signals that the statement is cmplete. (if left out, it causes errors)
+    Style note  
+        table names and column names are typically written in lower causes
+        the rest of the statement is written in uppercase 
+        helps to differentiate between table and column names
+    SQL data is persistent and cannot be overwritten 
+    Data Integrity - quality of the data we are working with. 
+        Clean data results in better analysis 
+        maintaining data integrity ensures greater accuracy and reliability 
+    Dirty data - contains errors such as duplicates, undefined values(Null) or other inconsistencies
+
+    Query to confirm 
+    confirm tables were successfully created by running a SELECT statement 
+    ex 
+    SELECT * FROM departments;  
+        (select all columns from the table) 
+        initially will only show the data structure.  Once data is 
+        imported the select statements will show the data. 
+
+    Data in the database is static - it will always be there unless it is altered.
+    what's in the query editor is not - you can lose them if they are not saved. 
+
+7.2.3 Import Data 
+SQL is interactive 
+    Not only for importing and querying data 
+    can also update and edit data in tables as needed. 
+
+7.2.4 Troubleshooting Imports 
+    Handling common errors 
+        foreign key errors - because this constraing references other tables, we need to import the data in order 
+        if there is no data in the referenced table, an error will occur.
+    Handling Mismatched data types 
+        because data is static, you can't go back and 'fix' it - you will need to drop the table, tweak the code that created it and reexecute
+        'DROP TABLE' statement - 
+        DROP TABLE employees CASCADE;
+            Tells Postgres that you want to remove the table from the database completely 
+            cascade; - you also want to remove the connections to other tables in the dbase 
+            even without data, the foreign key definitions reference other tables. 
+
+7.3.1 - Query Dates
+    Conditionals such as if/else and and are similar between python and SQL 
+    query results will be returned based on the conditions set. 
+
+    Sample statement: 
+    SELECT first_name, last_name, birth_date
+    FROM employees
+    WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31';
+
+    select statement indicates the columns you want to return 
+    FROM employees - tells you which table to query 
+    WHERE sets the conditions that should be used to return data 
+
+--Determine Retirement Eligiblity 
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31';
+-- returned 90398 employees
+
+--refine to 1952
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE birth_date BETWEEN '1952-01-01' AND '1952-12-31';
+-- returned 21209 employees
+
+--Refine to 1953
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE birth_date BETWEEN '1953-01-01' AND '1953-12-31';
+--REturned 22857 employees
+
+--Refine to 1954
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE birth_date BETWEEN '1954-01-01' AND '1954-12-31';
+--REturned 23228 employees
+
+--Refine to 1955 
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE birth_date BETWEEN '1955-01-01' AND '1955-12-31';
+--REturned 23104 employees
+
+--Narrow for eligiblity 
+SELECT first_name, last_name, birth_date, hire_date
+FROM employees
+WHERE (birth_date BETWEEN '1953-01-01' AND '1955-12-31')
+	AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+	
+--Count records
+SELECT COUNT (first_name)
+FROM employees
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+
+
+Creating new tables - 
+    Only data that is saved as a table can be easily exported 
+
+    SELECT first_name, last_name, birth_date, hire_date
+    INTO retirement_info
+    FROM employees
+    WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+	    AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+
+7.3.2 - Join tables 
+    Merging dataframes in Pandas is very similar to joining tables in SQL 
+    Multiple types of joins - each one yields a different result 
+
+    in order for joins to be successful - there need to be common columns between tables 
+
+    joins are common in every coding language that deals with data. 
+    joins treat tables as if they are side by side - should make it easier to visualize how data is joined. 
+
+    Inner joins - (simple join) - returns matching data from two tables. 
+    sql views tables in order - first and second - (left and right)
+    NaNs will not be included in this kind of join. 
+    ex: 
+    Departments () Managers 
+        If a department does not have a manager, it will not be listed in the joined data
+    
+    Left Join - (left outer join )
+        Takes all of the data from the left and only the matching from the right 
+        when rows do not have matching data for every row - a NaN is inserted into that column and row intersection 
+        All the data from the left table is included, and only matching data from the right table is included 
+        Department () Managers  
+            if a department does not have a manager, it would be listed with NAN values 
+
+    Right join (right outer join)
+        takes all of the data from the right table, and only the matching records from the left 
+        department() Managers
+            if a manager is not assigned to a department, it would show with no department information 
+
+    Full Outer Join 
+        Combines data from both tables 
+        these are potentially massiver and dangerous 
+        can bog down/crash the computer/Server
+        navigating data can be difficult
+        has the potential of being full of NaNs 
+
+7.3.3 - Using Joins 
+    Not limited to only two tables - can combine 3 or 4 if needed 
+
+    Using Inner Joins for departments and Department manager tables 
+    SELECT departments.dept_name,
+     dept_manager.emp_no,
+     dept_manager.from_date,
+     dept_manager.to_date
+    FROM departments
+    INNER JOIN dept_manager
+    ON departments.dept_no = dept_manager.dept_no;
+
+    SELECT - selects only those columns we want to view 
+    FROM - points to the first table in the join (departments)
+    InnerJoin - points to the second table to be joined (dept_manager)
+    ON departments.dept_no = managers.dept_no; - indicates where we should look for matches 
+
+
+    using left JOin to capture retirement info table 
+    -- Joining retirement_info and dept_emp tables
+    SELECT retirement_info.emp_no,
+        retirement_info.first_name,
+        retirement_info.last_name,
+        dept_emp.to_date
+    FROM retirement_info
+    LEFT JOIN dept_emp 
+    ON retirement_info.emp_no = dept_emp.emp_no; 
+
+    using Aliases for code readablity 
+        aliases allow us to give nicknames to tables 
+        helps improve readabilty 
+
+    EX 
+    SELECT ri.emp_no,
+        ri.first_name,
+        ri.last_name,
+        de.to_date
+    FROM retirement_info as ri
+    LEFT JOIN dept_emp as de
+    ON ri.emp_no = de.emp_no;
+
+    Aliases only exist within this query and are not commited to the database
+
+    SELECT d.dept_name,
+        dm.emp_no,
+        dm.from_date,
+        dm.to_date
+    FROM departments as d
+    INNER JOIN dept_manager as dm
+    ON d.dept_no = dm.dept_no;
+
+    Use Left Join 
+    SELECT ri.emp_no, 
+           ri.first_name, 
+           ri.last_name, 
+           de.to_date 
+    INTO current_emp 
+    FROM retirement_info as ri
+    LEFT JOIN dept_emp as de 
+    ON ri.emp_no = de.emp_no
+    WHERE de.to_date = ('9999-01-01'); 
+
+7.3.4 - Use Count/Group By/ Order by 
+COUNT - counts the rows of data in a dataset
+GROUP BY - separates into specified groupings 
+ORDER BY - orders by a column 
+
+
+-- Employee count by department number
+-- Returned in no specific order 
+SELECT COUNT(ce.emp_no), de.dept_no
+FROM current_emp as ce
+LEFT JOIN dept_emp as de
+ON ce.emp_no = de.emp_no
+GROUP BY de.dept_no;
+
+--REturned in department number order 
+SELECT COUNT(ce.emp_no), de.dept_no
+FROM current_emp as ce
+LEFT JOIN dept_emp as de
+ON ce.emp_no = de.emp_no
+GROUP BY de.dept_no
+ORDER BY de.dept_no;
+
+
+What is SQL and how is it different from NoSQL?
+SQL databases are held in tables, and are relational; i.e., tables can be related to other tables in the database. NoSQL databases are usually document based, where key-value pairs are used to store data.
+What is a primary key?
+A primary key is either a single or combination of fields which uniquely identify a row in the table.
+What is a foreign key?
+A foreign key in one table represents the primary key of another table. The relationship between the two is created by referencing each key.
+What joins can you tell me about?
+Inner join
+Inner joins return rows where there is at least one match of rows
+Right join
+Returns all the rows from the right hand table, even if there are no matches in the left
+Left join
+Reverse of right join
+Full join
+Results in the combination of results from both left and right tables. It will contain all records from both tables.
+What is a relationship and what kinds are there?
+Relationships are the associations between two columns in two or more tables. Table A will be associated with Table B in different ways. They are:
+One-to-one
+Defined as a direct relationship between two tables, a primary key on Table A will be associated with a foreign key on Table B; i.e. one author has only one place of birth.
+One-to-many
+Defined as a relationship between two tables where a row from Table A matches multiple rows in Table B; i.e. one author can have many books.
+Many-to-one
+The reverse of one-to-many, where a row from Table B can match multiple from Table A.
+Many-to-many
+Defined as a relationship between two tables where multiple rows from Table A match multiple rows from Table B, usually through Table C; i.e. where Table A is a list of application users, and table B is a list of books, Table C would combine IDs from both tables to indicate who owns which books in their personal library.
