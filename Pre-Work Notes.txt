@@ -1,0 +1,55 @@
+#Git Bash 
+    uses the same commands as Linux/Unix 
+    Helpful when deploying tools to a linux server 
+
+Commands 
+    cd - change directory 
+    cd~ - changes to the home directory 
+    cd.. - moving up 1 directory 
+    ls - lists files in a folder
+    pwd - shows the current directory path 
+    mkdir <foldername> - creates a new directory
+    touch <filename> - creates a file 
+    open. opens the current folder (mac only)
+    explorer - opens a specific file (win only)
+    echo sample_text_here >filename.extension - creates the file and inserts the text 
+    type filename.extension
+    notepad - opens a notepad editor 
+    dir - shows you the items in the specified directory 
+
+#Git and Git Hub 
+    Tools that help developers collaborate and safely store changing code. 
+
+Git - version control software 
+    Tracks changes to any files in your project 
+    allows you to roll back to undo changes
+    push - adds code to the repo
+    pull - download from the repo 
+    GitHub can tell you who wrote the code
+    GitHub can tell you who reviewed it
+    Facilitates the rolling back of code to previous versions. 
+Git is the most widely used version control system. 
+    Tracks changes via commits 
+
+Creating a new repository in Git 
+    Best practice - initialize the repository with a readme file 
+    Clone w SSh (under the code button)
+    In the terminal window (gitbash) - change the directory to where you want to put your code
+    Type 'git clone' and the URL that is copied from GitHub
+    Hit enter - the system will clone the structure from the indicated URL. 
+
+Git Commands 
+    git add -a - adds all files in the repository to be uploaded to the repo in the cloud. 
+    git commit -m 'Message' - commits the file to the current branch 
+    git push origin main - pushes the code into the indicated branch in the repo 
+    git checkout -b BRANCHNAME - checks out a new branch with the indicated name 
+
+Keys to Success 
+    Be committed
+    Making mistakes is part of the process
+    Be compassionate
+    Be career minded
+    Be original
+    Cite all borrowed or 'found' code
+    Comment your code
+    Commit to Git early and often. 
