@@ -1,0 +1,11 @@
+browser is the 'client' 
+Requesting information from a server.
+    Any URL or API call hits a server that is hosting 
+    data, waiting for the information request and then
+    passing data back. 
+
+a server is essentially a program - code running in the
+background to respond to the requets. 
+> we can write code that runs a server
+> we can determine what is presented 
+Flask is a micro web framework used to build APIs 
