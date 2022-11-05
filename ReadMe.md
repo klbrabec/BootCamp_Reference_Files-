@@ -5,7 +5,7 @@ Course Schedule and File Links
   - Week Four - Pandas 
   - Week Five - MatPlotLib 
   - Week Six - API Calls
-  - Week Seven - 
+  - Week Seven - SQL 
   - Week Eight - 
   - Week Nine - 
   - Week Ten - 
