@@ -1,15 +1,15 @@
 Course Schedule and File Links 
   - Week One - Excel 
-Week Two - VBA 
-Week Three - Python
-Week Four - 
-Week Five - 
-Week Six - 
-Week Seven - 
-Week Eight - 
-Week Nine - 
-Week Ten - 
-Week Eleven - 
+  - Week Two - VBA 
+  - Week Three - Python
+  - Week Four - 
+  - Week Five - 
+  - Week Six - 
+  - Week Seven - 
+  - Week Eight - 
+  - Week Nine - 
+  - Week Ten - 
+  - Week Eleven - 
 Week Twelve - 
 Week Thirteen - 
 Week Fourteen - 
