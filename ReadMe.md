@@ -1,4 +1,5 @@
-Week One - Excel 
+Course Schedule and File Links 
+  - Week One - Excel 
 Week Two - VBA 
 Week Three - Python
 Week Four - 
