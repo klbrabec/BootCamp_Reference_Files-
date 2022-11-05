@@ -7,8 +7,8 @@ Course Schedule and File Links
   - Week Six - API Calls
   - Week Seven - SQL 
   - Week Eight - ETL
-  - Week Nine - 
-  - Week Ten - 
+  - Week Nine - SQL Lite and Flask (MongoDB) 
+  - Week Ten - Data Ethics 
   - Week Eleven - 
 Week Twelve - 
 Week Thirteen - 
