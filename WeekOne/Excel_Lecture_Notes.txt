@@ -1,0 +1,91 @@
+Module Pages: https://github.com/klbrabec/Bootcamp_study_materials/tree/main/Week_One/Module_Notes
+
+Night One _______________
+"Lots of hard work and late nights" 
+Miss no more than 8 classes
+2 incomplete/unsubmitted assignments
+Participate in all projects
+Payment - don't miss payments or it can lead to academic hold 
+~30 hour commitment a week
+One person's strength is another person's weakness 
+When one succeeds, we ALL succeed. 
+Office Hours - 30 minutes before class/1 hour after class
+Treat homework like a work deadline 
+Get the big picture of data and data visualizations 
+Start the challenges right after you finish the pre-work for each week 
+All classes will be recorded - should be available by the next morning
+
+GitLab/GitHub 
+    This is where we will be pulling class materials from. 
+    GitHub - this is where we will be posting/submitting classwork 
+    GitLab - we will only pull material from here. 
+
+VLookup -
+    Values in a vertical column $before column and row - will maintain values when dragged down a column or across a row 
+    False = exact match 
+HLoookup 
+    Looks for values horizontally
+    Wants the ROW index, not the column 
+    False = Exact match 
+    Nest in an iferror to indicate that something is not found. 
+
+Night Two_____________________
+Stay ahead and ontime where you can.
+Get tutor assistance as you need it - they can be helpful (sign up for this)
+What's your passion?  This will drive where your focus is. 
+
+GitHub 
+    Web interface for git 
+    Push - upload
+    Pull - download 
+    You can revert back to a previous point if things go wrong 
+
+Best practice to have a readme file with descriptive information 
+This is the file that displays when you open your repo 
+
+Make it a practice to include a python git ignore
+    This allows you to ignore specific files when uploading 
+
+.md - markdown extension 
+    Formatting languagesVS Code/Text editor we are working with. 
+If you upload a file with the same name -it will overwrite things - but you can revert and see changes if needed.
+Can drag and drop to insert images into the markdown file. 
+
+Download things BEFORE class 
+
+Charts - recommended charts is a good place to start 
+    + sign on the chart allows you to add/edit formatting 
+        Style
+        color schemes 
+
+Without having something described, a viewer should be able to get an idea of what the data is showing.
+
+Ctrl/Shift/Arrow - does selections enmasse without the mouse 
+
+Eventually can make interactive filters and charts 
+Think of your data as a story telling tool 
+
+Switch row/column on a chart will 'flip' how excel guesses for you. 
+
+Mean - Average 
+Median - middle 
+Mode - Most frequently occurring 
+
+Depending on the skew, the average may not be the best description of your data 
+    Left skew distribution
+    Normal distribution
+    Right skew distribution 
+
+Be careful with how you are asking your questions to not bias things. 
+
+Extreme values in a dataset are not always reliable 
+
+Histogram - shows the frequency data shows up. 
+Standard errors
+Central limit theorem 
+
+Quantiles 
+    Quartiles - 4 equal parts 
+    Percentiles - 100 equal parts 
+
+Box and whisker plots - will show you if there is an outlier in your data 

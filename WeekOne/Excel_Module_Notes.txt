@@ -1,0 +1,144 @@
+Kickstarting with Excel 
+Module Pages: https://github.com/klbrabec/Bootcamp_study_materials/tree/main/Week_One/Module_Notes
+
+Formulas/Charts/Pivot Tables - set the stage for Data Visualization, languages and tools 
+Hosted file - stored online - with the intention to share via download or hyperlink 
+Local file - physically stored on local computer
+
+Bottom right - zoom % indicates the magnification of the text. 
+
+Tabular data - data displayed in a column and row format 
+|________________|________________|_________________|
+|________________|________________|_________________|
+
+Initial review of a spreadsheet 
+    How many columns and rows are there?
+    What types of data are present?
+    Is it readable or does it need to be converted in some way? 
+
+CTRL Right Arrow - takes you to the right most column 
+CTRL Down Arrow - Takes you to the last row. 
+
+Note - sometimes data isn't classified correctly - you should double check. 
+Putting data in the right format will allow you to perform
+    Categorization
+    Sorting
+    Statistics 
+Format entire columns vs single cells where possible 
+Tool to convert a timestamp to a human readable value -https://www.epochconverter.com/
+
+Timestamp -
+    Characters or information that has been encoded to identify the time an event has or will occur
+    Unix Timestamp - the number of seconds that have elapsed since 1/1/1970.  (without the inclusion of leap seconds)
+    Range will end 1/19/2038
+    Need a new method to convert to 64 bit
+    Unix Time converter
+        Can convert a timestamp into date/time 
+        Cannot go beyond 1/1/1900 1/19/2038 
+        Can be used to identify/convert date/time based on a person's time zone 
+
+Convert to date/time stamp in excel 
+    strtotime() - converts data to a unix time stamp 
+
+Filters - allow you to display only the data we want to focus on
+    Filter on a single column 
+    -Select column
+    -Data tab
+    -Filter 
+
+Freezing - allows portions of a spreadsheet to be locked in place so it is always displayed 
+
+    Freeze row
+    Freeze column 
+    Freeze pane 
+        (top and to the left of the selected cell)
+
+Conditional formatting 
+    Customizing the appearance of a cell based on its value. 
+    Conditional formatting (low to high)
+        If not a smooth transition - can expose an outlier 
+    Shifting to percentile can smooth out the transitions with the outliers still included. 
+
+iferror() - 
+    Catches errors and replaces them with user defined input 
+
+Nesting - one formula is nested inside another (both will run simultaneously)
+    the iferror() is designed to nest. 
+
+Text to columns - 
+    Can break apart columns where there is a consistent delimiter 
+
+VLookup - pulls specific columns from the main dataset into a new sheet without having to search and copy/paste 
+
+Measures of Central Tendency
+    The tendency of data to be towards the middle of the dataset. 
+    mean - sum of the data divided by the number of data points
+    median - what is the midpoint of the data?
+    mode - what value shows up the most 
+    When the mean and median are close together, the data is considered symmetric. 
+    If the mean is significantly different than the median - thinks are skewed. 
+        skewed right - mean is higher than median
+        skewed left - mean is lower than median 
+    skewness - statistic that defines how asymmetrical a distribution is. 
+    Excel does not have a mean function - it uses average 
+
+Measures of spread 
+    2 datasets can have the same mean or medium but look completely different 
+    Range
+        Span between the maxium value of the data set and the minimum value of the dataset. 
+    Variance 
+        How far datapoints are from the mean 
+            Subtract the mean from the point 
+            Square the difference 
+            Take the average of the differences because the values are squared - they don't quite match
+            To get it to match - take the square root - this is the standard deviation 
+    Standard deviation
+        To calculate:
+            Find the mean
+            Subtract the mean from each number in the dataset and square the number
+            Find the mean of the new numbers
+            Take the square root of the mean 
+
+        To correct the bias of a smaller variance than the actual population, you divide the sum of squared variances by the number of samples - 1
+        (Bessel's correction)
+
+    Quartiles 
+        done on a dataset that is arranged from lowest to highest. 
+            lower quartile - 25% of the data is less than this point
+            upper quartile - 25% of the data is higher than this point (75% is lower)
+            Median 
+        difference between the upper and lower quartiles is the interquartile range 
+            this is a guide on how far you can go from the mean to get 50% of the data 
+        IQR = Q3 - Q1 - IQR tells us how the data is spread around the median. 
+    The inner quartile rule can be used to find outliers. 
+        Multiple IQR by 1.5 
+        Add to Q1 and Q3 - any number below (for Q1) or above (for Q3) should be considered an outlier 
+
+    Excel Formulas - 
+    STDEV.P - Standard deviation of a population 
+    STDEV.S - Standard deviation of a sample 
+    QUARTILE.EXC 
+
+    When standard deviations are larger than the mean, everything below the mean is close to the center. 
+
+    Outliers
+        Identifying outliers eliminates (or identifies) extreme data points that are not representative of the desired data 
+        Can use
+            Mean and standard deviation 
+            OR
+            median and interquartile range 
+        Any value greater than the upper quartile + 1.5*IQR 
+        Any value less than the lower quartile - 1.5*IQR
+        THESE ARE OUTLIERS 
+
+        Medians and Quartiles are robust statistics - meaning they are less sensitive to outliers 
+        Mean and standard deviaition is less accurate but less labor intensive 
+
+    When an outlier is identified - 
+        Correct it if it's wrong, but if it is accurate - leave it in and tell the full story of your data 
+    
+    Visualizing data with BoxPlots 
+        effective way to show large amounts of information about a distribution 
+        (Also called box and whisper plots)
+
+    https://www.markdownguide.org/basic-syntax/
