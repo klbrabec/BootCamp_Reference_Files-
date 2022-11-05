@@ -1,0 +1,141 @@
+VBA - Visual Basic for Applications
+    hosted within MS Office 
+    Macros
+        Anything you can do in excel can be done via VBA 
+VBA is a programming language that interacts directly with excel worksheets and cells
+Allows for scripts to automate simple tasks
+VBA macros to trigger popups and inputs
+For loops
+nested for loops 
+
+Macros are automated tasks 
+    Allows you to run repeatable tasks
+    VBA is included with excel but is disabled by default 
+
+    .xlsx extension workbooks cannot hold macros 
+    .xlsm is the type of file extension you need to use.
+
+Remember to ONLY open macro files from a trusted source.
+
+Subroutine - a collection of steps or instructions 
+
+Statements - 
+    Words in VBA that have a special meaningfulpart of a set of keywords
+    Vocabulary of the programming language 
+
+Syntax - rules for how keywords can be arranged
+    Syntax error - what happens when the rules are not followed 
+
+Sub - opens the sub routine
+End Sub - closes the sub routine 
+
+Sub routines can take in inputs (called arguments)
+    () indicates the Subroutine will not take any arguments
+    Variable - holds the data in code 
+        Name
+        Data type - how many bits of memory the variable will hold 
+    
+        Integer - whole number 
+            16 bits = 2 bytes
+            1 - stores +/-
+            15 - stores value 
+        overflow - when the value of a variable extends past the range of a data type 
+
+        Integer - +/- whole numbers 
+            -32,768>32,767 (16 bits)
+        Long - +/- whole numbers 
+            -2,147,675/2,147,483,674 (32 bits)
+        Double - Decimal numbers - 64 bits 
+        String - text 
+        Boolean - True/False 
+
+        Dim - dimension - used to create a variable 
+            ex dim test_message as string 
+
+        two ways to access cells in VBA 
+            Range()
+            Cells()
+
+        Everything we interact with in VBA is an object 
+            Properties are predefined variables that hold values about the object 
+            Method - collection of instructions to be called 
+
+        range()
+            selects cells with the same range format as excel (can also be a single cell)
+
+        cells()
+            needs two arguments
+            how many rows down from the top
+            how many columns from the left 
+            cells() is more flexible - individual numbers are easier to work with than strings of coordinates
+
+        Readable code - clear and well documented
+        Helpful to document and comment code for readability and supportability 
+            use comments and whitespace
+
+        Adding comments helps to document or remember the thought process you used to develop the code. 
+
+        in VBA - comments start with a single quote 
+            whitespace is invisible to VCBA - except for spaces between keywords and linebreaks 
+        Be consistent with your formatting. 
+
+    Loops - tell a computer to repeat code over and over again 
+        For loops - tell the computer to repeat the code a specific number of times 
+
+        for i = 1 to 3
+            msgbox(i)
+            msgbox = i 
+        next i 
+                This will start i as 1, and cycle through until i reaches 3. (It will increment automatically each cycle)
+
+        worksheet(2018)activate <-- ensures that the macro focuses on the sheet in the ()
+
+        You can also use variables defined outside of the forloop 
+
+        hard coded values = magic numbers - these should be avoided as much as possible 
+            Create variables with row start and stop and assign the values we want to use 
+        don't necessarily need to initialize variables using Dim - can set them as they are initialized 
+            this assigns the variable types in the background 
+        using named variables makes code more flexible 
+
+    conditionals - tell the computer that certain lines of code should only run in certain conditions 
+        if/then 
+            if a condition is true, then x code will execute 
+            if condition then
+                run code
+            end if 
+
+        patterns - templates to solve similar problems 
+
+    pseudocode 
+        a way to think through and design logic prior to writing code 
+        anti patterns can be too ineffective, specialized, or counter productive 
+        'kludges'
+        'code smells' - the code works and solves the problem - but there may be a more elegant way to do it 
+    research    
+        official documentation 
+        stack overflow
+        quora
+        expert blog posts 
+
+    how to find the number of rows with data in VBA 
+        lastrow = cells(rows.count, "A").end(xlup) 
+            this goes to the bottom of column A, finds the last cell with data, and sets Lastrow = to that row number
+        always link to comment/url/source where you found code that you did not write. 
+
+    logical operators/boolean operators 
+        link more than one condition together - allows for more complex arguments 
+
+        AND - true if both conditions are true 
+        OR - true if only 1 condition is true 
+        NOT - gives the opposite of the condition 
+        <> - not equal to - comparision operator checks that the values are not equal 
+        i=2 - sets the iterator to 2 - which skips the column headers 
+
+        DRY - Don't repeat yourself 
+            if you are re-using the same code over and over again - there is probably a way to do things
+        
+        Arrays (lists)
+            - hold an arbitrary number of variables 
+                - index - the position of a variable in the array
+            - most indexes will start at 0 and increment 
