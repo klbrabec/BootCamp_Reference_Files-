@@ -2,7 +2,7 @@ Course Schedule and File Links
   - Week One - Excel 
   - Week Two - VBA 
   - Week Three - Python
-  - Week Four - 
+  - Week Four - Pandas 
   - Week Five - 
   - Week Six - 
   - Week Seven - 
